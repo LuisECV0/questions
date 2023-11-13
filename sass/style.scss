@@ -1,0 +1,117 @@
+$color1:rgb(83, 76, 175) ;
+$color2:#c9c4c4;
+$color3: rgb(69, 69, 122);
+
+body {
+    background-color: $color3;
+    font-family: 'Muli', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    .container {
+        text-align: center;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        position: relative;
+        z-index: 1;
+        .progress-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 30px;
+
+            &::before {    
+                content: '';
+                background-color: $color2;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                height: 4px;
+                width: 100%;
+                z-index: -1;
+            }
+            .progress {
+                background-color: $color1;
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                height: 4px;
+                width: 0%;
+                z-index: -1;
+                transition: width 0.4s ease;
+            }
+            .circle {
+                background-color: #fff;
+                color: #777;
+                border-radius: 50%;
+                height: 30px;
+                width: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: 3px solid $color2;
+                transition: 0.4s ease;
+            
+                &.active {
+                border-color: $color1;
+                }
+            }
+        }
+        .question-container {
+            display: none;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+
+            &.active {
+            display: block;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+            }
+            input[type="text"] {
+                width: 100%;
+                padding: 8px;
+                margin-top: 8px;
+                box-sizing: border-box;
+                border-radius:10px;
+                margin-bottom: 10px;
+                border: 1px solid black;
+            }
+        }
+        .btn {
+            background-color: $color1;
+            color: #fff;
+            border: 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-family: inherit;
+            padding: 8px 30px;
+            margin: 5px;
+            font-size: 14px;
+          
+            &:active {
+              transform: scale(0.98);
+            }
+          
+            &:focus {
+              outline: 0;
+            }
+          
+            &:disabled {
+              background-color: $color2;
+              cursor: not-allowed;
+            }
+          }
+    }
+  }
+  @keyframes fadeIn {
+    to {
+      opacity: 1;
+    }
+  }
